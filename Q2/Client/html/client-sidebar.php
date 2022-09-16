@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins:wght@600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500&family=Eczar:wght@500;600&display=swap" rel="stylesheet">
     <!-- Box icon CDN  -->
     <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
 
@@ -32,8 +32,8 @@
     <div class="sidebar">
         <div class="logo-content">
             <div class="logo">
-                <i class='bx bx-book-bookmark'></i>
-                <div class="logo-name">Bookstop</div>
+                <!-- <i class='bx bx-book-bookmark'></i> -->
+                <div class="logo-name" style="font-family: 'Eczar', serif; font-weight:600;">Category</div>
             </div>
             <!-- <i class='bx bx-menu' id="hamburger-btn"></i> -->
         </div>
@@ -66,6 +66,14 @@
     </div>
 
     <!-- sidebar end  -->
+    <!-- <script>
+        $(document).ready(function(){
+            $("#hamburger-btn").on('click',function(){
+                $(".sidebar").toggleClass(' active');
+            });
+        });
+        
+    </script> -->
 
 </body>
 
