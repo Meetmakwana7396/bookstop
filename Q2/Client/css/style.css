@@ -183,6 +183,8 @@
 
 /* Sidebar CSS end  */
 
+
+
 /* Homepage CSS */
 
 .poster{
@@ -214,6 +216,25 @@
     color: White;
     font-family: 'Cinzel', serif;    
     font-size: 30px;
+    height: fit-content;
+
+    font-weight:500;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.card-area{
+    padding: 10px;
+}
+
+.card-area h3{
+    /* font-family: 'Eczar', serif;     */
+    font-size: 30px;
+    margin: 10px 0px;
     height: fit-content;
 
     font-weight:500;
