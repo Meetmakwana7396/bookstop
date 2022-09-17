@@ -245,3 +245,37 @@
     -ms-user-select: none;
     user-select: none;
 }
+
+.card-image{
+    height: 200px;
+    width: 145px;
+}
+.atc-btn{
+    background-color: #53a4e0;
+    color: white;
+    border: 0px;
+    width: 100%;
+}
+
+.atc-btn:hover{
+    background-color: #1e7bd7;
+    color: white;
+}
+
+.atf-btn{
+    width: 100%;
+    color: #d24b8d;
+    border: 1px solid #d24b8d;
+}
+
+.atf-btn:hover{
+    background-color: #e55279;
+    color: white;
+}
+
+.sidebar-categories{
+    height:400px;
+    width: 100%;
+    padding: 5px;
+    overflow-y: scroll;
+}

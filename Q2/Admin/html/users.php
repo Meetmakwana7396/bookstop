@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <table class="table my-3 table-success table-hover userTB mx-auto">
+        <table class="table my-3 table-primary table-hover userTB mx-auto">
             <thead>
                 <tr>
                     <th scope="col">id</th>

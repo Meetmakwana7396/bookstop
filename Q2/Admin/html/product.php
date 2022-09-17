@@ -63,7 +63,7 @@
                 </div>
             </div>
         </div>
-        <table class="table my-3 table-success table-hover productTB mx-auto">
+        <table class="table my-3 table-primary table-hover productTB mx-auto">
             <thead>
                 <tr>
                     <th scope="col">No</th>

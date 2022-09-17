@@ -45,7 +45,7 @@ include "databaseconnection.php";
                 </div>
             </div>
 
-            <table class="table my-3 table-success table-hover">
+            <table class="table my-3 table-primary table-hover">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
