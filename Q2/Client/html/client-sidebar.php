@@ -33,13 +33,43 @@
         <div class="logo-content">
             <div class="logo">
                 <!-- <i class='bx bx-book-bookmark'></i> -->
-                <div class="logo-name" style="font-family: 'Eczar', serif; font-weight:600;">Category</div>
+                <div class="logo-name" style="font-family: 'Eczar', serif; font-weight:600;">Menu</div>
             </div>
 
             <!-- <i class='bx bx-menu' id="hamburger-btn"></i> -->
         </div>
 
         <div class="sidebar-categories">
+        </div>
+
+        <div class="user-stuff">
+        
+        <li class="my-2 " data-bs-toggle="tooltip" data-bs-placement="right" title="Orders">
+                <a href="./index.php">
+                <i class='bx bx-home'></i>
+                    <span class="links-name">Home</span>
+                </a>
+            </li>
+            <li class="my-2 " data-bs-toggle="tooltip" data-bs-placement="right" title="Orders">
+                <a href="./cart.php">
+                    <i class='bx bx-cart-alt'></i>
+                    <span class="links-name">Cart</span>
+                </a>
+            </li>
+
+            <li class="my-2 " data-bs-toggle="tooltip" data-bs-placement="right" title="Orders">
+                <a href="#">
+                <i class='bx bx-heart'></i>
+                    <span class="links-name">Favourite Items</span>
+                </a>
+            </li>
+
+            <li class="my-2 " data-bs-toggle="tooltip" data-bs-placement="right" title="Orders">
+                <a href="#">
+                    <i class='bx bx-log-out'></i>
+                    <span class="links-name">Logout</span>
+                </a>
+            </li>
         </div>
 
     </div>
@@ -55,31 +85,6 @@
     </script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-
-    <script>
-        $(document).ready(function() {
-            var catData = "";
-
-            $.ajax({
-                url: "display-cate-client.php",
-                type: "GET",
-                dataType: "JSON",
-                success: function(data) {
-                    const category = data.data;
-                    for (let key in category) {
-                        catData += `<li class="my-2 " data-bs-toggle="tooltip" data-bs-placement="right" title="Orders">
-                            <a href="#">
-                            <i class='bx bx-pin'></i>
-                            <span class="links-name">${category[key].category} </span>
-                            </a>
-                        </li>`;
-
-                    }
-                    $(".sidebar-categories").append(catData);
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>

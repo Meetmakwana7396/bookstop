@@ -70,7 +70,7 @@
                             password: password,
                         },
                         success: function(data) {
-                            if (data == 1) {
+                            if (data == "admin") {
                                 $(location).attr('href', 'category.php');
                             } else if (data == 0) {
                                 $("#toast").removeClass("toast align-items-center bg-success");
@@ -78,6 +78,9 @@
 
                                 $("#toast").addClass("toast align-items-center bg-warning")
                                 $(".toast-body").html("Please Enter User Credentials");
+                            } else if (data == 1) {
+                                $(location).attr('href', '../../Client/html/index.php');
+
                             } else {
                                 $("#toast").removeClass("toast align-items-center bg-success");
                                 $("#toast").removeClass("toast align-items-center bg-warning");
@@ -105,4 +108,5 @@
         }
     </script>
 </body>
+
 </html>

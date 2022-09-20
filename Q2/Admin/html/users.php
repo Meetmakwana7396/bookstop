@@ -29,7 +29,7 @@
                 <div class="modal-body">
 
                         <div class="mb-3">
-                            <input type="hidden" name="snoEdit" id="modal-id">
+                            <input type="text" name="snoEdit" class="form-control bg-dark text-light custom-fields" id="modal-id">
                             <label for="titleedit" class="form-label">Username</label>
                             <input type="text" name="price_field" class="form-control bg-dark text-light custom-fields"  id="modal-username">
                         </div>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" id="save-btn" class="btn btn-success">Save changes</button>
+                    <button type="button" id="save-btn" onclick="editUser(id,username,email,password,mobile,city)" class="btn btn-success">Save changes</button>
                 </div>
             </div>
         </div>
@@ -167,8 +167,9 @@
         }
 
         function editUser(id,username,email,password,mobile,city) {
-           console.log("hello");
+           console.log(id);
             $("#editModal").modal("show");
+            $("#modal-id").val(id).focus();
             $("#modal-username").val(username).focus();
             $("#modal-email").val(email);
             $("#modal-password").val(password);
@@ -195,7 +196,7 @@
                         email:EMAIL,
                         password:PASSWORD,
                         mobile:MOBILE,
-                        city:CITY
+                        city:CITY,
                     },
                     success: function(data) {
                         if (data == 1) {

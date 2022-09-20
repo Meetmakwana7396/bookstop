@@ -22,16 +22,41 @@
             </div>
             <div class="card-area">
                 <h3>Book List</h3>
-                <div class=" row card-list d-flex cols-row-3 justify-content-evenly" id="card-list">
+                <div class=" row card-list d-flex cols-row-3 justify-content-around" id="card-list">
 
 
                 </div>
             </div>
         </div>
     </div>
+
+
+
     <script>
         $(document).ready(function() {
+            var catData = "";
             var cardData = "";
+            // Displaying All Categories From CategoryTB in Sidebar 
+            $.ajax({
+                url: "display-cate-client.php",
+                type: "GET",
+                dataType: "JSON",
+                success: function(data) {
+                    const category = data.data;
+                    for (let key in category) {
+                        catData += `<li class="my-2" onclick="get_items_by_category('${category[key].category}')">
+                            <a href="#">
+                            <i class='bx bxs-log-in-circle' ></i>
+                            <span class="links-name" >${category[key].category} </span>
+                            </a>
+                        </li>`;
+
+                    }
+                    $(".sidebar-categories").html(catData);
+                }
+            });
+
+            // Displaying All The items onLoad 
             $.ajax({
                 url: "display-books.php",
                 dataType: "JSON",
@@ -39,7 +64,7 @@
                 success: function(data) {
                     const products = data.data;
                     for (let key in products) {
-                        cardData += `<div class="card mb-3 p-3 col-4" style="max-width: 540px;">
+                        cardData += `<div class="card mb-5 p-3 col-4" style="max-width: 540px; height:fit-content; font-family: 'Eczar', sans-serif; ">
                         <div class="row g-0">
                             <div class="col-md-4 d-flex justify-content-center align-items-center">
                                 <img src='../../Admin/html/image/${products[key].image}' class="img-fluid rounded card-image" alt="...">
@@ -48,14 +73,14 @@
                                 <div class="card-body">
                                     <h5 class="card-title">${products[key].name}</h5>
                                     <p class="card-text"> <span class="card-labels">Category: </span> ${products[key].category} </p>
-                                    <p class="card-text"> <span class="card-labels">Description: </span> ${products[key].description}</p>
-                                    <p class="card-text"> <span class="card-labels">Price: </span> ${products[key].price}</p>
+                                    <p class="card-text"> <span class="card-labels">Description: </span> ${products[key].description.substr(0,50)}..</p>
+                                    <p class="card-text" style="color:red"> <span class="card-labels">Rs. </span> ${products[key].price}</p>
 
                                 </div>
                             </div>
                         </div>
                         <div class="row my-2">
-                                <div class="col"><div class="btn atc-btn">Add To Cart</div></div>
+                        <div class="col"><div class="btn atc-btn" onclick="addToCart(${products[key].id},'${products[key].name}','${products[key].category}','${products[key].price}','${products[key].image}')">Add To Cart</div></div>
                                 <div class="col"><div class="btn atf-btn">Add To Favourite</div></div>
                         </div>
                     </div>`;
@@ -66,7 +91,76 @@
                 },
 
             });
+
+
         });
+
+        // Displaying Items by Clicking On Particular Category 
+        function get_items_by_category(cat) {
+
+            $.ajax({
+                url: "display-catwise.php",
+                type: "POST",
+                dataType: "JSON",
+                data: {
+                    category: cat
+                },
+                success: function(data) {
+                    cardData = "";
+                    const products = data.data;
+                    for (let key in products) {
+                        cardData += `<div class="card mb-5 p-3 col-4" style="max-width: 540px; height:fit-content; font-family: 'Eczar', sans-serif; ">
+                        <div class="row g-0">
+                            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                                <img src='../../Admin/html/image/${products[key].image}' class="img-fluid rounded card-image" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">${products[key].name}</h5>
+                                    <p class="card-text"> <span class="card-labels">Category: </span> ${products[key].category} </p>
+                                    <p class="card-text"> <span class="card-labels">Description: </span> ${products[key].description.substr(0,50)}..</p>
+                                    <p class="card-text" style="color:red"> <span class="card-labels">Rs. </span> ${products[key].price}</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row my-2">
+                                <div class="col"><div class="btn atc-btn" onclick="addToCart(${products[key].id},'${products[key].name}','${products[key].category}','${products[key].price}','${products[key].image}')">Add To Cart</div></div>
+                                <div class="col"><div class="btn atf-btn">Add To Favourite</div></div>
+                        </div>
+                    </div>`;
+
+                    }
+                    $("#card-list").html("");
+                    $("#card-list").html(cardData);
+
+                },
+            });
+        }
+
+        // Product Add To Cart API 
+        function addToCart(pid, pname, pcategory, pprice, pimage) {
+            $.ajax({
+                url: "add-to-cart.php",
+                type: "POST",
+                data: {
+                    pid: pid,
+                    pname: pname,
+                    pcategory: pcategory,
+                    pprice: pprice,
+                    pimage: pimage
+                },
+                dataType: 'JSON',
+                success: function(data) {
+                    if(data == 1){
+                        alert("added to cart");
+                    }
+                    else{
+                        alert("not able to add");
+                    }
+                }
+            });
+        }
     </script>
 </body>
 

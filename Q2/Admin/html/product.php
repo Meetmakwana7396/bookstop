@@ -115,7 +115,7 @@
                                 <td>${products[key].name}</td>
                                 <td>${products[key].category}</td>
                                 <td>${products[key].price}</td>
-                                <td>${products[key].description}</td>
+                                <td>${products[key].description.substring(0,40)}...</td>
                                 <td> <img src='./image/${products[key].image}'  class="product_img" alt=""> </td>
                                 <td><button type="button" id="delete-btn" onclick="delID(${products[key].id})" class="btn btn-danger">Delete</button></td>
                                </tr>`;
