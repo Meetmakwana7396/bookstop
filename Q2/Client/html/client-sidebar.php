@@ -42,7 +42,7 @@
         <div class="sidebar-categories">
         </div>
 
-        <div class="user-stuff">
+        <!-- <div class="user-stuff">
         
         <li class="my-2 " data-bs-toggle="tooltip" data-bs-placement="right" title="Orders">
                 <a href="./index.php">
@@ -70,7 +70,7 @@
                     <span class="links-name">Logout</span>
                 </a>
             </li>
-        </div>
+        </div> -->
 
     </div>
 

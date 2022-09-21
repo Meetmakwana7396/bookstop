@@ -81,7 +81,7 @@
                 if (username != "" && email != "" && password != "" && cnfpassword != "" && mobileno != "" && city != "") {
 
                     $.ajax({
-                        url: 'add-users.php',
+                        url: './Admin/html/add-users.php',
                         type: 'post',
                         dataType: 'json',
                         data: {
@@ -100,7 +100,7 @@
                                 $("#toast").addClass("toast align-items-center bg-success");
                                 $(".toast-body").html("You have Signed up Successfully");
                                 setTimeout(function() {
-                                    window.location = 'login.php';
+                                    window.location = './login.php';
                                 }, 3000);
 
                             } else {

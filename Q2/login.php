@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
     <!-- css plugins -->
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./Admin/css/style.css">
 
     <!-- Google fonts  -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,12 +57,12 @@
                 var username = $('#username').val();
                 var password = $('#password').val();
                 if (username == "admin" && password == "admin123") {
-                    $(location).attr('href', 'category.php');
+                    $(location).attr('href', './Admin/html/category.php');
 
                 } else {
 
                     $.ajax({
-                        url: 'check-user.php',
+                        url: './Admin/html/check-user.php',
                         type: 'POST',
                         dataType: 'json',
                         data: {
@@ -71,7 +71,7 @@
                         },
                         success: function(data) {
                             if (data == "admin") {
-                                $(location).attr('href', 'category.php');
+                                $(location).attr('href', './Admin/html/category.php');
                             } else if (data == 0) {
                                 $("#toast").removeClass("toast align-items-center bg-success");
                                 $("#toast").removeClass("toast align-items-center bg-danger");

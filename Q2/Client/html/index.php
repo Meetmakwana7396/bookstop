@@ -10,10 +10,13 @@
 </head>
 
 <body>
-
+    <?php
+    include "user-stuff.php";
+    ?>
     <div class="wrapper">
         <?php
         include "client-sidebar.php";
+
         ?>
         <div class="container-fluid home-content">
             <div class="row poster">
@@ -152,16 +155,20 @@
                 },
                 dataType: 'JSON',
                 success: function(data) {
-                    if(data == 1){
+                    if (data == 1) {
                         alert("added to cart");
+                    }else if(data == 2) {
+                        alert("First you have to login");
                     }
                     else{
-                        alert("not able to add");
+                        alert("not able to add to cart");
                     }
                 }
             });
         }
     </script>
+
+
 </body>
 
 </html>
