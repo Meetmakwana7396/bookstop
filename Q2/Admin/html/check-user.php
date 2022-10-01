@@ -4,9 +4,7 @@ include "databaseconnection.php";
 
     $username = $_POST['username'];
     $password = $_POST['password'];
-    // if ($username == "admin" && $password == "admin123") {
-    //     echo "admin";
-    // }
+  
 
     $sql = "SELECT * FROM `userTB` WHERE `username` = '$username' and `password` = '$password' ";
     $result = mysqli_query($conn , $sql);

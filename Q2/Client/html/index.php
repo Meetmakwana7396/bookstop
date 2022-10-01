@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    
     <?php
     include "user-stuff.php";
     ?>
@@ -18,6 +19,16 @@
         include "client-sidebar.php";
 
         ?>
+        <div class="toast-msg-box" id="toast-msg-box">
+        <div class="toast align-items-center" id="toast" role="alert">
+            <div class="d-flex">
+                <div class="toast-body">
+                    Please Type The Category, The Field Cant't Be Empty.
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
         <div class="container-fluid home-content">
             <div class="row poster">
                 <p>BOOKSTOP</p>
@@ -67,7 +78,7 @@
                 success: function(data) {
                     const products = data.data;
                     for (let key in products) {
-                        cardData += `<div class="card mb-5 p-3 col-4" style="max-width: 540px; height:fit-content; font-family: 'Eczar', sans-serif; ">
+                        cardData += `<div class="card mb-5 p-3 col-4" style="max-width: 540px; min-width: auto; height:fit-content; font-family: 'Eczar', sans-serif; ">
                         <div class="row g-0">
                             <div class="col-md-4 d-flex justify-content-center align-items-center">
                                 <img src='../../Admin/html/image/${products[key].image}' class="img-fluid rounded card-image" alt="...">
@@ -109,6 +120,13 @@
                     category: cat
                 },
                 success: function(data) {
+                    // if (data == 0) {
+                    //     $("#toast").removeClass("toast align-items-center bg-success");
+                    //     $("#toast").removeClass("toast align-items-center bg-danger");
+
+                    //     $("#toast").addClass("toast align-items-center bg-warning")
+                    //     $(".toast-body").html("Please Enter User Credentials");
+                    // }
                     cardData = "";
                     const products = data.data;
                     for (let key in products) {
@@ -157,17 +175,27 @@
                 success: function(data) {
                     if (data == 1) {
                         alert("added to cart");
-                    }else if(data == 2) {
+                    } else if (data == 2) {
                         alert("First you have to login");
-                    }
-                    else{
+                    } else {
                         alert("not able to add to cart");
                     }
                 }
             });
         }
     </script>
+    <!-- Toast msg Script  -->
+    <script>
+        const toastTrigger = document.getElementsByTagName('li');
+        const toastLiveExample = document.getElementById('toast');
+        if (toastTrigger) {
+            toastTrigger.addEventListener('click', () => {
+                const toast = new bootstrap.Toast(toastLiveExample);
 
+                toast.show();
+            });
+        }
+    </script>
 
 </body>
 

@@ -14,6 +14,9 @@ function display_books()
         $res = array("data"=>$cat_products);
         echo json_encode($res);
     }
+    else{
+        echo 0;
+    }
 
 }
 display_books();
