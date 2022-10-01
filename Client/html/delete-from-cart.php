@@ -1,10 +1,10 @@
 <?php
 include "databaseconnection.php";
 
-    $pid = $_POST['pid'];
+    $oid = $_POST['oid'];
 
         // die("vhenbhod");
-        $sql = "DELETE FROM `cartTB` WHERE `productid` = $pid";
+        $sql = "DELETE FROM `cartTB` WHERE `oid` = $oid";
         $output = mysqli_query($conn, $sql) or die("operation failed");
  
        

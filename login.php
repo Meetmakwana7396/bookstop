@@ -79,7 +79,7 @@
                                 $("#toast").addClass("toast align-items-center bg-warning")
                                 $(".toast-body").html("Please Enter User Credentials");
                             } else if (data == 1) {
-                                $(location).attr('href', '../../Client/html/index.php');
+                                $(location).attr('href', './Client/html/index.php   ');
 
                             } else {
                                 $("#toast").removeClass("toast align-items-center bg-success");

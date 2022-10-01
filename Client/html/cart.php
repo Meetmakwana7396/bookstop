@@ -14,23 +14,33 @@
     include "user-stuff.php";
     ?>
   <div class="wrapper">
-    
     <div class="container-fluid">
       <div class="container cartproducts my-4">
-
+        
       </div>
     </div>
   </div>
 
   <script>
     $(document).ready(function() {
-      function displayCart(){
+    
+    displayCart();
+      
+    });
+    function displayCart(){
       var cartData = "";
       $.ajax({
         url: "display-cart.php",
         type: "GET",
         dataType: "JSON",
         success: function(data) {
+          if(data == 0){
+            cartData+= `<div class="" align="center">
+          <img src="../images/doodle.png"  alt="cart is empty" srcset="">
+                <p>Looks like ur cart is empty pal!</p>
+        </div>`;
+            $(".cartproducts").html(cartData);
+          }
           const products = data.data;
           for (let key in products) {
             cartData += `<div class="d-flex product-bar p-3 my-4">
@@ -46,7 +56,7 @@
 
                 <div class="ms-3" align="right">
                 <div class="btn btn-success w-50" onclick="placeOrder(${products[key].productid},'${products[key].product_name}', '${products[key].product_category}','${products[key].product_price}','${products[key].product_image}')" >Place Order</div> 
-                <div class="btn btn-danger my-1 w-50" onclick="removeFromCart(${products[key].productid})" >Delete</div>
+                <div class="btn btn-danger my-1 w-50" onclick="removeFromCart(${products[key].oid})" >Delete</div>
                   <input type="number" class="form-control my-2 w-50" placeholder="Quantity" aria-label="First name">
 
                 
@@ -58,10 +68,6 @@
         }
       });
     }
-    displayCart();
-      
-    });
-
     function placeOrder(pid, pname, pcat, pprice, pimg) {
         console.log("blah blah");
         $.ajax({
@@ -86,11 +92,11 @@
         });
       }
 
-      function removeFromCart(pid){
+      function removeFromCart(oid){
         $.ajax({
           url: "delete-from-cart.php",
           type: "POST",
-          data:{pid:pid},
+          data:{oid:oid},
           dataType: "JSON",
           success:function(data){
             if(data == 1){

@@ -342,6 +342,7 @@
 
 .cartproducts {
     width: fit-content;
+    height: 100vh;
 }
 
 .product-bar p {

@@ -1,7 +1,6 @@
 <?php
 session_start();
-function display_books()
-{
+
     $user_id = $_SESSION['userid'];
     include "databaseconnection.php";
     $sql = "SELECT * FROM cartTB WHERE userid = $user_id";
@@ -15,7 +14,6 @@ function display_books()
         $res = array("data"=>$products);
         echo json_encode($res);
     }
-
-}
-display_books();
-?>        
+    else{
+        echo 0;
+    }
